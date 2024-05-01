@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     NGROK_PASS: SecretStr
     ADMIN: int
     DB_NAME: str
+    CHANNEL_ID: int
     STAGE: Stage
     db_echo: bool = False
 
