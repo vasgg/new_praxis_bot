@@ -7,11 +7,12 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
+from bot.handlers.about_handlers import router as about_router
 from bot.handlers.command_handlers import router as base_router
-from bot.handlers.errors_handler import router as errors_router
-from bot.handlers.form_handlers import router as form_router
 from bot.handlers.comment_redirect_handler import router as redirect_router
+from bot.handlers.errors_handler import router as errors_router
 from bot.handlers.feedback_handler import router as feedback_router
+from bot.handlers.form_handlers import router as form_router
 from bot.internal.commands import set_bot_commands
 from bot.internal.notify_admin import on_shutdown_notify, on_startup_notify
 from bot.middlewares.auth_middleware import AuthMiddleware
@@ -41,7 +42,7 @@ async def main():
     dispatcher.startup.register(set_bot_commands)
     dispatcher.startup.register(on_startup_notify)
     dispatcher.shutdown.register(on_shutdown_notify)
-    dispatcher.include_routers(base_router, errors_router, form_router, redirect_router, feedback_router)
+    dispatcher.include_routers(base_router, errors_router, form_router, redirect_router, feedback_router, about_router)
     await dispatcher.start_polling(bot)
 
 
