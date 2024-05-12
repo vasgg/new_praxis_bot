@@ -1,6 +1,6 @@
 import logging
 
-from aiogram import F, Router, types
+from aiogram import Router, types
 from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
