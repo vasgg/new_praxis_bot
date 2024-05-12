@@ -11,14 +11,7 @@ from src.database.models import Form, User
 from src.enums import States
 
 router = Router()
-logger = logging.getLogger()
-
-
-@router.callback_query(F.data == 'form')
-async def start_registration(call: types.CallbackQuery, state: FSMContext) -> None:
-    await call.answer()
-    await call.message.answer(text=replies['input_name'])
-    await state.set_state(States.INPUT_NAME)
+logger = logging.getLogger(__name__)
 
 
 @router.message(StateFilter(States))
@@ -64,15 +57,12 @@ async def input_entity(message: types.Message, user: User, state: FSMContext, db
             await state.set_state(States.INPUT_MORE)
         case States.INPUT_MORE:
             await state.update_data(more=text)
-            await message.answer(text=replies['input_telegram'])
-            await state.set_state(States.INPUT_TELEGRAM)
-        case States.INPUT_TELEGRAM:
-            await state.update_data(telegram=text)
             await message.answer(text=replies['input_recommended'])
             await state.set_state(States.INPUT_RECOMMENDED)
         case States.INPUT_RECOMMENDED:
-            await state.update_data(recommended=text)
-            await state.update_data(user_id=user.id)
+            await state.update_data(recommended=text,
+                                    user_telegram_id=user.telegram_id,
+                                    user_fullname=user.fullname)
             data = await state.get_data()
             new_form = Form(**data)
             db_session.add(new_form)
