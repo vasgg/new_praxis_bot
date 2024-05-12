@@ -1,7 +1,7 @@
 from sqlalchemy import Result, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.database.models import User
+from src.database.models import FeedbackMessage, Form, User
 from src.enums import States
 
 
@@ -35,7 +35,6 @@ def get_form_field_type_text(state: str) -> str:
         States.INPUT_ON_PLACE: 'Очные встречи или онлайн?',
         States.INPUT_EXPERIENCE: 'Расскажите о своём опыте обращений к психологам, психотерапевтам или психиатрам.',
         States.INPUT_MORE: 'Что ещё важного мы не спросили?',
-        States.INPUT_TELEGRAM: 'Дополнительный способ связи',
         States.INPUT_RECOMMENDED: 'Как вы узнали о Новой практике?',
     }
     return form_field_to_text.get(state)
@@ -53,7 +52,19 @@ def get_state_by_text(text: str) -> str:
         'input_on_place': States.INPUT_ON_PLACE,
         'input_experience': States.INPUT_EXPERIENCE,
         'input_more': States.INPUT_MORE,
-        'input_telegram': States.INPUT_TELEGRAM,
         'input_recommended': States.INPUT_RECOMMENDED,
     }
     return text_to_state.get(text)
+
+
+async def get_user_tg_id_from_record(mode: str, record_id: int, db_session: AsyncSession) -> int:
+    match mode:
+        case 'FORM':
+            query = select(Form.user_telegram_id).filter(Form.id == record_id)
+        case 'FEEDBACK':
+            query = select(FeedbackMessage.user_telegram_id).filter(FeedbackMessage.id == record_id)
+        case _:
+            msg = f"Unexpected data type: {mode}"
+            raise AssertionError(msg)
+    result: Result = await db_session.execute(query)
+    return result.scalar()
