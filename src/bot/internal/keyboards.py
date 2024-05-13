@@ -11,7 +11,7 @@ main_menu_kb = InlineKeyboardMarkup(
             InlineKeyboardButton(text='Поддержать проект', callback_data='donate'),
         ],
         [
-            InlineKeyboardButton(text='Связаться с нами', callback_data='contact'),
+            InlineKeyboardButton(text='Связаться с нами', callback_data='contacts'),
             InlineKeyboardButton(text='Дать фидбэк', callback_data='feedback'),
         ],
     ]
