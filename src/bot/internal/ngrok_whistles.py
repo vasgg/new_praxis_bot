@@ -1,7 +1,7 @@
 import aiohttp
 from aiohttp import BasicAuth
 
-from src.config import settings
+from config import settings
 
 
 async def blink1_blue():

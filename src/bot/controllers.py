@@ -1,8 +1,8 @@
 from sqlalchemy import Result, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.database.models import FeedbackMessage, Form, User
-from src.enums import States
+from database.models import FeedbackMessage, Form, User
+from enums import States
 
 
 async def add_user_to_db(user, db_session) -> User:

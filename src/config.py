@@ -3,7 +3,7 @@ from logging.handlers import RotatingFileHandler
 from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from src.enums import Stage
+from enums import Stage
 
 
 class Settings(BaseSettings):

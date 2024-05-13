@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from src.config import settings
-from src.database.database_connector import DatabaseConnector
-from src.database.models import Base
+from config import settings
+from database.database_connector import DatabaseConnector
+from database.models import Base
 
 
 async def create_or_drop_db(engine: AsyncEngine, create: bool = True):

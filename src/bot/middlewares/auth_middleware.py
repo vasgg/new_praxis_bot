@@ -3,10 +3,10 @@ from typing import Any, Awaitable, Callable, Dict
 from aiogram import BaseMiddleware
 from aiogram.types import Message
 
-from src.bot.internal.ngrok_whistles import blink1_blue, sheet_update
-from src.config import settings
-from src.bot.controllers import add_user_to_db, get_user_from_db_by_tg_id
-from src.enums import Stage
+from bot.internal.ngrok_whistles import blink1_blue, sheet_update
+from config import settings
+from bot.controllers import add_user_to_db, get_user_from_db_by_tg_id
+from enums import Stage
 
 
 class AuthMiddleware(BaseMiddleware):
