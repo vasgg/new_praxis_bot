@@ -4,10 +4,10 @@ from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.bot.internal.texts import replies
-from src.config import settings
-from src.database.models import FeedbackMessage, User
-from src.enums import Feedback
+from bot.internal.texts import replies
+from config import settings
+from database.models import FeedbackMessage, User
+from enums import Feedback
 
 router = Router()
 logger = logging.getLogger(__name__)

@@ -5,9 +5,9 @@ from aiogram import F, Router, types
 from pydantic import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.bot.controllers import get_user_tg_id_from_record
-from src.bot.filter import ChatTypeFilter
-from src.config import settings
+from bot.controllers import get_user_tg_id_from_record
+from bot.filter import ChatTypeFilter
+from config import settings
 
 router = Router()
 logger = logging.getLogger(__name__)

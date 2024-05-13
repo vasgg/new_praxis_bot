@@ -5,10 +5,10 @@ from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.bot.internal.texts import replies
-from src.config import settings
-from src.database.models import Form, User
-from src.enums import States
+from bot.internal.texts import replies
+from config import settings
+from database.models import Form, User
+from enums import States
 
 router = Router()
 logger = logging.getLogger(__name__)

@@ -1,6 +1,6 @@
 from aiogram import F, Router, types
 
-from src.bot.internal.texts import replies
+from bot.internal.texts import replies
 
 router = Router()
 

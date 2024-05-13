@@ -2,9 +2,9 @@ from aiogram import F, Router, types
 from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
 
-from src.bot.internal.keyboards import about_kb, main_menu_kb
-from src.bot.internal.texts import replies
-from src.enums import Feedback, States
+from bot.internal.keyboards import about_kb, main_menu_kb
+from bot.internal.texts import replies
+from enums import Feedback, States
 
 router = Router()
 
