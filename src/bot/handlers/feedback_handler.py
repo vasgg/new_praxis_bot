@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 @router.message(Feedback.INPUT_FEEDBACK, F.text)
 async def input_feedback(message: types.Message, user: User, state: FSMContext, db_session: AsyncSession) -> None:
     text = str(message.text)
+    await message.answer(text=replies['feedback_reply'])
     await state.update_data(text=text,
                             user_telegram_id=user.telegram_id,
                             user_fullname=user.fullname)
