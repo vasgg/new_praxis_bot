@@ -34,7 +34,7 @@ async def form(call: types.CallbackQuery, state: FSMContext) -> None:
 
 @router.message(Command('about'))
 async def about(message: types.Message) -> None:
-    await message.answer(text=replies['about'])
+    await message.answer(text=replies['about'], reply_markup=about_kb)
 
 
 @router.callback_query(F.data == 'about')
