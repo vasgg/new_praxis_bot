@@ -14,15 +14,13 @@ class States(StatesGroup):
     INPUT_ON_PLACE = State()
     INPUT_EXPERIENCE = State()
     INPUT_MORE = State()
-    INPUT_TELEGRAM = State()
     INPUT_RECOMMENDED = State()
+
+
+class Feedback(StatesGroup):
+    INPUT_FEEDBACK = State()
 
 
 class Stage(StrEnum):
     DEV = auto()
     PROD = auto()
-
-
-class Action(StrEnum):
-    CONFIRM = auto()
-    CHANGE = auto()

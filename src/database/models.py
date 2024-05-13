@@ -31,7 +31,8 @@ class User(Base):
 class Form(Base):
     __tablename__ = 'forms'
 
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
+    user_telegram_id: Mapped[int] = mapped_column(ForeignKey('users.telegram_id'))
+    user_fullname: Mapped[str] = mapped_column(ForeignKey('users.fullname'))
     name: Mapped[str]
     age: Mapped[int]
     problem: Mapped[str]
@@ -42,5 +43,12 @@ class Form(Base):
     on_place: Mapped[str]
     experience: Mapped[str]
     more: Mapped[str]
-    telegram: Mapped[str]
     recommended: Mapped[str]
+
+
+class FeedbackMessage(Base):
+    __tablename__ = 'feedbacks'
+
+    user_telegram_id: Mapped[int] = mapped_column(ForeignKey('users.telegram_id'))
+    user_fullname: Mapped[str] = mapped_column(ForeignKey('users.fullname'))
+    text: Mapped[str]
