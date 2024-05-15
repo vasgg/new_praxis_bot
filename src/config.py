@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     NGROK_URL: SecretStr
     NGROK_USER: SecretStr
     NGROK_PASS: SecretStr
-    TEST_ROOM: int
+    CHAT_ID: int
     ADMIN: int
     DB_NAME: str
     CHANNEL_ID: int
