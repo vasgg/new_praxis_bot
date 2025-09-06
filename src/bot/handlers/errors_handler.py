@@ -26,4 +26,4 @@ async def error_handler(error_event: "ErrorEvent", bot: aiogram.Bot):
     )
     logger.exception("Exception:", exc_info=exc_info)
 
-    await bot.send_message(settings.ADMIN, error_message)
+    await bot.send_message(settings.ADMIN, error_message, disable_notification=True)
