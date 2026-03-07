@@ -8,9 +8,6 @@ from enums import Stage
 
 class Settings(BaseSettings):
     BOT_TOKEN: SecretStr
-    NGROK_URL: SecretStr
-    NGROK_USER: SecretStr
-    NGROK_PASS: SecretStr
     CHAT_ID: int
     ADMIN: int
     DB_NAME: str
